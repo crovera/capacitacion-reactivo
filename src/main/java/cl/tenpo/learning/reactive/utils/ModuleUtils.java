@@ -1,14 +1,14 @@
 package cl.tenpo.learning.reactive.utils;
 
-import com.github.javafaker.Faker;
 import lombok.extern.slf4j.Slf4j;
+import net.datafaker.Faker;
 import org.reactivestreams.Subscriber;
 
 import java.time.Duration;
 
 @Slf4j
 public class ModuleUtils {
-    private static final Faker faker = Faker.instance();
+    private static final Faker faker = new Faker();
 
     public static Faker faker() {
         return faker;

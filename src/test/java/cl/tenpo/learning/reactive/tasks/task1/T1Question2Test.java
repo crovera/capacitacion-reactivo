@@ -61,7 +61,7 @@ public class T1Question2Test {
     }
 
     @Test
-    @DisplayName("PREGUNTA 2B - Francia es el segundo país")
+    @DisplayName("PREGUNTA 2C - Francia es el segundo país")
     public void question2_c_uc1_test() {
 
         List<String> countries = List.of("Argentina", "France", "Croatia", "Morocco");

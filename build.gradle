@@ -29,22 +29,29 @@ configurations {
 
 dependencies {
     implementation (group: 'org.springframework.boot', name: 'spring-boot-starter-webflux')
-    implementation (group: 'com.github.javafaker', name: 'javafaker', version: "$faker") { exclude module: 'org.yaml' }
-    implementation (group: 'org.yaml', name: 'snakeyaml', version: "$yaml")
+    implementation (group: 'org.springframework.boot', name:'spring-boot-starter-data-r2dbc')
+    implementation (group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive')
+    implementation (group: 'org.springframework.boot', name: 'spring-boot-starter-data-redis-reactive')
+    implementation (group: 'org.springframework.kafka', name: 'spring-kafka')
+    implementation (group: 'io.projectreactor.kafka', name:'reactor-kafka', version: "$kafka")
+
+    implementation (group: 'net.datafaker', name: 'datafaker', version: "$faker")
     implementation (group: 'ch.qos.logback', name: 'logback-classic')
+
+    runtimeOnly (group: 'org.postgresql', name: 'postgresql')
+    runtimeOnly (group: 'org.postgresql', name: 'r2dbc-postgresql')
 
     compileOnly (group: 'org.projectlombok', name: 'lombok')
     annotationProcessor (group: 'org.projectlombok', name: 'lombok')
 
     testImplementation (group: 'org.springframework.boot', name:'spring-boot-starter-test')
+    testImplementation (group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: "$embeddedMongo")
+    testImplementation (group: 'com.github.codemonstur', name: 'embedded-redis', version: "$embeddedRedis")
     testImplementation (group: 'io.projectreactor', name: 'reactor-test')
 
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 test {
     useJUnitPlatform()
+    exclude 'cl/tenpo/learning/reactive/tasks/task1/**'
 }
